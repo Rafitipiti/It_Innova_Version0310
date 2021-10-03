@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<script type="text/javascript"
+	src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.16.0/jquery.validate.js"></script>
+<link rel="icon" type="image/png" sizes="32x32" href="/imagenes/favicon-32x32.png"/>
+<link
+	href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css"
+	rel="stylesheet" id="bootstrap-css"></link>
+<script
+	src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+</head>
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+
+header {
+  height: 41px;
+  background: #000;
+  color: #FFF;
+  display: flex;
+  justify-content: flex-end;
+}
+
+#btn-menu {
+  display: none;
+}
+
+header label {
+  font-size: 20px;
+  cursor: pointer;
+  display: none;
+}
+
+.menu ul {
+  background: #000;
+  display: flex;
+  list-style: none;
+}
+
+.menu ul ul {
+  display: none;
+}
+
+.menu a {
+  display: block;
+  padding: 10px 10px;
+  color: #FFF;
+  text-decoration: none;
+  line-height: 20px;
+  font-family: 'Ubuntu', sans-serif;
+  font-weight: 200;
+}
+
+.menu a:hover {
+   background: #3282b8;
+}
+
+.menu a i {
+  margin-left: 10px;
+}
+
+.menu ul li:hover ul {
+  transition: all 0.3s ease;
+  display: block;
+  position: absolute;
+}
+
+
+</style>
+<body>
+
+	<div th:replace="bienvenido :: header"></div>
+
+	<div class="container py-4">
+
+		<div class="card bg-danger text-white">
+			<div class="card-header">Error: NO TIENES ACCESO!</div>
+			<div class="card-body">
+				<h5 class="card-title">
+					Sorry <span th:text="${#authentication.name}"></span>,NO tienes permisos para acceder a este recurso. 
+				</h5>
+				
+
+			</div>
+		</div>
+	</div>
+
+	
+</body>
+</html>

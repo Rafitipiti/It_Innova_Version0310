@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8"></meta>
+<title>TP2 </title>
+<script type="text/javascript"
+	src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.16.0/jquery.validate.js"></script>
+<link rel="icon" type="image/png" sizes="32x32" href="/imagenes/favicon-32x32.png"/>
+<link
+	href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css"
+	rel="stylesheet" id="bootstrap-css"></link>
+<script
+	src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+</head>
+<style>
+
+.form-group{
+width:500px;
+margin:auto;
+}
+
+
+
+.btn{
+padding:6px;
+margin-left: 35%;
+
+
+   width: 100px;
+    margin-top: 10px;
+}
+
+input{
+padding:6px;
+font-size:13px;
+width:270px;
+}
+
+label{
+padding:9px;
+width:180px;
+display:inline-block;
+
+}
+select{
+padding:9px;
+width:180px;
+display:inline-block;
+width:270px;
+
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+
+header {
+  height: 41px;
+  background: #000;
+  color: #FFF;
+  display: flex;
+  justify-content: flex-end;
+}
+
+#btn-menu {
+  display: none;
+}
+
+header label {
+  font-size: 20px;
+  cursor: pointer;
+  display: none;
+}
+
+.menu ul {
+  background: #000;
+  display: flex;
+  list-style: none;
+}
+
+.menu ul ul {
+  display: none;
+}
+
+.menu a {
+  display: block;
+  padding: 10px 10px;
+  color: #FFF;
+  text-decoration: none;
+  line-height: 20px;
+  font-family: 'Ubuntu', sans-serif;
+  font-weight: 200;
+}
+
+.menu a:hover {
+   background: #3282b8;
+}
+
+.menu a i {
+  margin-left: 10px;
+}
+
+.menu ul li:hover ul {
+  transition: all 0.3s ease;
+  display: block;
+  position: absolute;
+}
+
+
+</style>
+
+<body>
+<div th:replace="bienvenido :: header"></div>
+  <br></br>
+	<!-- insertar espacio -->
+    <!-- agregar nombre -->
+	<H2><strong><p style="text-align:center">Registro de Usuarios</p></strong></H2>
+	  <br></br>
+	<div class="container">
+		<form th:action="@{/process_register}" th:object="${user}"
+			method="post">
+			
+			<div class="form-group">
+				<label for="email">E-mail: </label>
+					<input type="email" th:field="*{email}"/>
+				<label for="password">Password: </label>
+					<input type="password" th:field="*{password}" 
+							required minlength="6" maxlength="10"/>
+				<label for="firstName">Nombres: </label>
+					<input type="text" th:field="*{firstName}"
+							required minlength="2" maxlength="20"/>
+
+				<label for="lastName">Apellidos: </label>
+				
+					<input type="text" th:field="*{lastName}" 
+							required minlength="2" maxlength="20" />
+								<label for="tipoDocumento">Tipo Documento </label>
+		
+					<select name="tipoDocumento" th:field="*{documentType}"  id="tipoDocumento">
+						<option value="DNI">DNI</option>
+						<option value="CARNET DE EXTRANJERIA">CARNET DE EXTRANJERIA</option>
+						<option value="PASAPORTE">PASAPORTE</option>
+		</select>
+
+				<label for="documentNimber">Número de Documento</label>
+
+					<input type="text" th:field="*{documentNumber}"
+						   required minlength="2" maxlength="20" />
+	<div class="btn">
+			<button type="submit" class="btn btn-primary">Aceptar</button>
+				</div>
+		
+			</div>
+	</form>
+		</div>
+
+</body>
+</html>

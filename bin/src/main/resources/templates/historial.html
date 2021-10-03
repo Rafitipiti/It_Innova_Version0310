@@ -1,0 +1,142 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <script type="text/javascript"
+            src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.16.0/jquery.validate.js"></script>
+    <link rel="icon" type="image/png" sizes="32x32" href="/imagenes/favicon-32x32.png"/>
+    <link
+            href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css"
+            rel="stylesheet" id="bootstrap-css"></link>
+    <script
+            src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: sans-serif;
+    }
+
+    header {
+        height: 41px;
+        background: #000;
+        color: #FFF;
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    #btn-menu {
+        display: none;
+    }
+
+    header label {
+        font-size: 20px;
+        cursor: pointer;
+        display: none;
+    }
+
+    .menu ul {
+        background: #000;
+        display: flex;
+        list-style: none;
+    }
+
+    .menu ul ul {
+        display: none;
+    }
+
+    .menu a {
+        display: block;
+        padding: 10px 10px;
+        color: #FFF;
+        text-decoration: none;
+        line-height: 20px;
+        font-family: 'Ubuntu', sans-serif;
+        font-weight: 200;
+    }
+
+    .menu a:hover {
+        background: #3282b8;
+    }
+
+    .menu a i {
+        margin-left: 10px;
+    }
+
+    .menu ul li:hover ul {
+        transition: all 0.3s ease;
+        display: block;
+        position: absolute;
+    }
+</style>
+
+<body>
+<div th:replace="bienvenido :: header"></div>
+<br></br>
+<!-- insertar espacio -->
+<!-- agregar nombre -->
+<H2><strong><p style="text-align:center">Lista de Emergencias</p></strong></H2>
+<br></br>
+<div class="container">
+        <div class="row clearfix">
+            <div class="col-md-12 column" >
+                <form th:action="@{/patient/historial}" method="get">
+                    <input id="txtSearch" type="text" name="keyword" placeholder="Buscar solo por DNI">
+                    <button type="submit">Buscar</button>
+                    <br></br>
+                </form>
+                <table class="table table-bordered table-hover table-striped"
+                       id="tab_logic">
+                    <thead>
+                    <tr>
+                        <th class="text-center">CODIGO</th>
+                        <th class="text-center">NOMBRE PACIENTE</th>
+                        <th class="text-center">APELLIDO PACIENTE</th>
+                        <th class="text-center">DNI</th>
+                        <th class="text-center">FECHA</th>
+                        <th class="text-center">RITMO CARDIACO</th>
+                        <th class="text-center">TRANSTORNO</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="rac: ${emergencies}">
+                   
+                        <td th:text="${rac.id}"></td>
+                        <td th:text="${rac.nombres}"></td>
+                        <td th:text="${rac.apellidos}"></td>
+                        <td th:text="${rac.DNI}"></td>
+                        <td th:text="${rac.fecha_ritmo}"></td>
+                     <td th:text="${rac.heartRate}"></td>
+                       <td th:text="${rac.transtorno}"></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+</div>
+<div th:replace="fragments/footer :: footer"></div>
+<script>
+    function setInputFilter(textbox, inputFilter) {
+        ["input", "keydown", "keyup", "mousedown", "mouseup", "select", "contextmenu", "drop"].forEach(function(event) {
+            textbox.addEventListener(event, function() {
+                if (inputFilter(this.value)) {
+                    this.oldValue = this.value;
+                    this.oldSelectionStart = this.selectionStart;
+                    this.oldSelectionEnd = this.selectionEnd;
+                } else if (this.hasOwnProperty("oldValue")) {
+                    this.value = this.oldValue;
+                    this.setSelectionRange(this.oldSelectionStart, this.oldSelectionEnd);
+                } else {
+                    this.value = "";
+                }
+            });
+        });
+    }
+    setInputFilter(document.getElementById("txtSearch"), function(value) {
+        return /^\d*$/.test(value); });
+</script>
+
+</body>
+</html>

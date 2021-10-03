@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8"></meta>
+<title>TP2 </title>
+<script type="text/javascript"
+	src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.16.0/jquery.validate.js"></script>
+<link rel="icon" type="image/png" sizes="32x32" href="/imagenes/favicon-32x32.png"/>
+<link
+	href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css"
+	rel="stylesheet" id="bootstrap-css"></link>
+<script
+	src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+</head>
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+
+header {
+  height: 41px;
+  background: #000;
+  color: #FFF;
+  display: flex;
+  justify-content: flex-end;
+}
+
+#btn-menu {
+  display: none;
+}
+
+header label {
+  font-size: 20px;
+  cursor: pointer;
+  display: none;
+}
+
+.menu ul {
+  background: #000;
+  display: flex;
+  list-style: none;
+}
+
+.menu ul ul {
+  display: none;
+}
+
+.menu a {
+  display: block;
+  padding: 10px 10px;
+  color: #FFF;
+  text-decoration: none;
+  line-height: 20px;
+  font-family: 'Ubuntu', sans-serif;
+  font-weight: 200;
+}
+
+.menu a:hover {
+  background: #3282b8;
+}
+
+.menu a i {
+  margin-left: 10px;
+}
+
+.menu ul li:hover ul {
+  transition: all 0.3s ease;
+  display: block;
+  position: absolute;
+}
+
+</style>
+<body>
+  <header>
+	<div th:fragment="header">
+    <input type="checkbox" id="btn-menu" />
+    <label for="btn-menu"><i class="fa fa-bars"></i></label>
+    <nav class="menu">
+      <ul>
+        <li><a th:href="@{/Miperfil}">Mi Perfil</a></li>
+        <li class="submenu"><a th:href="@{/users}">Usuarios <i class="fa fa-caret-down"></i></a>
+          <ul>
+          <li><a th:href="@{/users}">Lista de usuarios</a></li>
+            <li><a th:href="@{/register}">Registrar Usuarios</a></li>
+          
+          </ul>
+        </li>
+        <li class="submenu"><a th:href="@{/paciente/listar}">Pacientes <i class="fa fa-caret-down"></i></a>
+          <ul>
+          <li><a th:href="@{/paciente/listar}">Lista de Pacientes</a></li>
+            <li><a th:href="@{/paciente/irRegistrar}">Registrar Pacientes</a></li>
+          
+          </ul>
+        </li>
+         <li class="submenu"><a th:href="@{/patient/listar}">Emergencias <i class="fa fa-caret-down"></i></a>
+          <ul>
+          <li><a th:href="@{/patient/listar}">Emergencias Nuevas</a></li>
+            <li><a th:href="@{/patient/listarat}">Emergencias Atendidas</a></li>
+          
+          </ul>
+        </li>
+          <li><a th:href="@{/patient/historial}">Historial Emergencias</a></li>
+          <li><a th:href="@{/inicio/login}">Cerrar Sesion</a></li>
+      </ul>
+    </nav>
+   </div>
+ 
+   </header>
+ 
+   
+   
+  </body>
+  <br></br>
+         <center><h3>BIENVENIDO AL PORTAL DE MONITOREO</h3></center>
+          <br></br>
+     <div class="container">
+		<form id="myform">
+			<div class="row clearfix">
+				<div class="col-md-12 column" align="center">
+					<img th:src="@{/imagenes/img.png}" width="550" height="400" alt="logo" align="middle"></img>
+				</div>
+			</div>
+		</form>
+	</div>
+  
+</html>

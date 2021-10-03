@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<meta charset="ISO-8859-1">
+<title>Paciente</title>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<link
+	href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css"
+	rel="stylesheet" id="bootstrap-css"></link>
+
+<script
+	src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script type="text/javascript" th:src="@{/js/paciente.js}"></script>
+<style>
+
+.form-group{
+width:500px;
+margin:auto;
+}
+
+
+
+.btn{
+padding:6px;
+margin-left: 35%;
+
+
+   width: 100px;
+    margin-top: 10px;
+}
+
+input{
+padding:6px;
+font-size:13px;
+width:270px;
+}
+
+label{
+padding:9px;
+width:180px;
+display:inline-block;
+
+}
+select{
+padding:9px;
+width:180px;
+display:inline-block;
+width:270px;
+
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+
+header {
+  height: 41px;
+  background: #000;
+  color: #FFF;
+  display: flex;
+  justify-content: flex-end;
+}
+
+#btn-menu {
+  display: none;
+}
+
+header label {
+  font-size: 20px;
+  cursor: pointer;
+  display: none;
+}
+
+.menu ul {
+  background: #000;
+  display: flex;
+  list-style: none;
+}
+
+.menu ul ul {
+  display: none;
+}
+
+.menu a {
+  display: block;
+  padding: 10px 10px;
+  color: #FFF;
+  text-decoration: none;
+  line-height: 20px;
+  font-family: 'Ubuntu', sans-serif;
+  font-weight: 200;
+}
+
+.menu a:hover {
+   background: #3282b8;
+}
+
+.menu a i {
+  margin-left: 10px;
+}
+
+.menu ul li:hover ul {
+  transition: all 0.3s ease;
+  display: block;
+  position: absolute;
+}
+
+
+</style>
+
+</head>
+
+<body>
+    
+	<div th:replace="bienvenido :: header"></div>
+	<!-- insertar espacio -->
+    <!-- agregar nombre -->
+      <br></br>
+	<H2><strong><p style="text-align:center">REGISTRO DE PACIENTES</p></strong></H2>
+	  <br></br>
+	<div class="container">
+		
+		<form th:action="@{/paciente/registrar}" method="post" th:object="${paciente}"
+		
+			enctype="multipart/form-data">
+			<div class="form-group">
+			
+				<label for="idpaciente">ID:</label> <input type="text" th:field="*{idPaciente}"></input>
+
+				<div class="form-group">
+					<label for="paciente">Nombres:</label> <input type="text"  pattern="[A-Za-z-_-ñ\s]+" title="Solo se admiten letras"
+						th:field="*{nombrePaciente}"  id="paciente"></input>
+					<div class="alert alert-danger"
+						th:if="${#fields.hasErrors('nombrePaciente')}" th:errors="*{nombrePaciente}"></div>
+					<label for="paciente">Apellidos:</label> <input type="text"  pattern="[A-Za-z-_-ñ\s]+" title="Solo se admiten letras"
+						th:field="*{apellidoPaciente}"  id="apellidoPaciente"></input>
+						<div class="alert alert-danger"
+						th:if="${#fields.hasErrors('apellidoPaciente')}" th:errors="*{apellidoPaciente}"></div>
+						
+					<label for="tipoDocumento">Tipo Documento:</label> 	
+					<select name="tipoDocumento" th:field="*{tipoDocumento}"  id="tipoDocumento">
+								<option value="DNI">DNI</option>
+								<option value="CARNET DE EXTRANJERIA">CARNET DE EXTRANJERIA</option>
+								<option value="PASAPORTE">PASAPORTE</option>
+					</select>	
+					<label for="nroDocumento">Numero de Documento:</label> 
+					<input type="text"  pattern="[0-9]+" title="Solo se admiten numeros"
+						th:field="*{nroDocumento}"  id="nroDocumento"></input>
+					<div class="alert alert-danger"
+						th:if="${#fields.hasErrors('nroDocumento')}" th:errors="*{nroDocumento}"></div>
+												
+				<label for="nrocelular">Celular:</label> <input type="text"   pattern="[0-9]+" title="Solo se admiten numeros"
+						th:field="*{nrocelular}"  id="nrocelular"></input>
+					<div class="alert alert-danger"
+						th:if="${#fields.hasErrors('nrocelular')}" th:errors="*{nrocelular}"></div>			
+				
+				</div>
+			</div>
+			<div th:if= "${mensaje eq true}" class="alert alert-danger">El paciente ya se encuentra registrado</div>
+		
+			<div class="btn">
+			<button type="submit" class="btn btn-primary">Aceptar</button>
+			
+			<a href="/paciente/listar" class="btn btn-danger">Cancelar</a>
+			</div>
+
+		</form>
+	</div>
+	<br></br>
+	
+
+</body>
+</html>

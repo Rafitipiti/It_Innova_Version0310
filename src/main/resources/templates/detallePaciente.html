@@ -1,0 +1,147 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <script type="text/javascript"
+            src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.16.0/jquery.validate.js"></script>
+    <link rel="icon" type="image/png" sizes="32x32" href="/imagenes/favicon-32x32.png"/>
+    <link
+            href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css"
+            rel="stylesheet" id="bootstrap-css"/>
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+            integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+            crossorigin=""></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+          integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+          crossorigin=""/>
+    <script
+            src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: sans-serif;
+    }
+    #mapid {
+        height: 100%;
+        width:100%
+    }
+
+    header {
+        height: 41px;
+        background: #000;
+        color: #FFF;
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    #btn-menu {
+        display: none;
+    }
+
+    header label {
+        font-size: 20px;
+        cursor: pointer;
+        display: none;
+    }
+
+    .menu ul {
+        background: #000;
+        display: flex;
+        list-style: none;
+    }
+
+    .menu ul ul {
+        display: none;
+    }
+
+    .menu a {
+        display: block;
+        padding: 10px 10px;
+        color: #FFF;
+        text-decoration: none;
+        line-height: 20px;
+        font-family: 'Ubuntu', sans-serif;
+        font-weight: 200;
+    }
+
+    .menu a:hover {
+        background: #3282b8;
+    }
+
+    .menu a i {
+        margin-left: 10px;
+    }
+
+    .menu ul li:hover ul {
+        transition: all 0.3s ease;
+        display: block;
+        position: absolute;
+    }
+</style>
+
+<body>
+<div th:replace="bienvenido :: header"></div>
+<br></br>
+<!-- insertar espacio -->
+<!-- agregar nombre -->
+<H2><strong><p style="text-align:center">Detalle Paciente</p></strong></H2>
+<br></br>
+<div class="container">
+    <form id="myform">
+        <div class="row clearfix">
+            <div class="col-md-12 column" >
+                <table class="table table-bordered table-hover table-striped"
+                       id="tab_logic">
+                    <thead>
+                    <tr>
+                        <th class="text-center">CODIGO</th>
+                        <th class="text-center">NOMBRE PACIENTE</th>
+                        <th class="text-center">APELLIDO PACIENTE</th>
+                        <th class="text-center">DNI</th>
+                        <th class="text-center">RITMO CARDIACO</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="rac: ${emergencies}">
+                        <td th:text="${rac.id}"></td>
+                        <td th:text="${rac.nombres}"></td>
+                        <td th:text="${rac.apellidos}"></td>
+                        <td th:text="${rac.DNI}"></td>                    
+                     <td th:text="${rac.heartRate}"></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </form>
+    <div id="mapid"></div>
+    <script th:inline="javascript">
+        /*<![CDATA[*/
+        var listVals = /*[[${emergencies}]]*/ "Test1";
+        /*]]>*/
+        for(i=0; i<listVals.length; i++){
+            var lon = listVals[i].length;
+            var lat = listVals[i].latitude;
+        }
+
+        var mymap = L.map('mapid').setView([lat, lon], 16);
+
+        L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
+            attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+            maxZoom: 18,
+            id: 'mapbox/streets-v11',
+            tileSize: 512,
+            zoomOffset: -1,
+            accessToken: 'pk.eyJ1IjoiZW1wZWxleWNhbCIsImEiOiJja3Q2aXZoMmUwaXZrMnltdTZjdTNna2N5In0.IIPKoAYkkmrjMFpqT-r-xA',
+        }).addTo(mymap);
+
+        L.marker([lat, lon]).addTo(mymap);
+    </script>
+</div>
+<div th:replace="fragments/footer :: footer"></div>
+
+</body>
+</html>

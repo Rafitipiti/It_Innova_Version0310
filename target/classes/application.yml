@@ -1,0 +1,24 @@
+spring:
+    datasource:
+      url: jdbc:sqlserver://monitoreoadmin.database.windows.net:1433;database=tp2;encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30;
+      username: monitoreoadmin
+      password: Admin123
+    jpa:
+      show-sql: true
+      hibernate:
+        ddl-auto: update
+        format_sql: true
+        dialect : org.hibernate.dialect.SQLServer2012Dialect
+    mail:
+        host: smtp.gmail.com
+        username: leyva.calle1403@gmail.com
+        password: zxfjbrchgptmsblb
+        port: 587
+        properties:
+            mail:
+                smtp:
+                    auth: true
+                    starttls:
+                        enable: true
+
+                       
