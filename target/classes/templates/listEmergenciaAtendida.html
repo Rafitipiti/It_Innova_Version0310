@@ -84,38 +84,35 @@
     <form id="myform">
         <div class="row clearfix">
             <div class="col-md-12 column" >
-                <table class="table table-bordered table-hover table-striped"
-                       id="tab_logic">
-                    <thead>
-                    <tr>
-                        <th class="text-center">CODIGO</th>
-                        <th class="text-center">NOMBRE PACIENTE</th>
-                        <th class="text-center">APELLIDO PACIENTE</th>
-                        <th class="text-center">DNI</th>
-                        <th class="text-center">FECHA</th>
-                        <th class="text-center">RITMO CARDIACO</th>
-                        <th class="text-center">TRANSTORNO</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr th:each="rac: ${emergenciesAtt}">
-                        <td th:text="${rac.id}"></td>
-                        <td th:text="${rac.nombres}"></td>
-                        <td th:text="${rac.apellidos}"></td>
-                        <td th:text="${rac.DNI}"></td>
-                        <td th:text="${rac.fecha_ritmo}"></td>
-                     <td th:text="${rac.heartRate}"></td>
-                       <td th:text="${rac.transtorno}"></td>
-                    
-
-                    </tr>
-                    </tbody>
-                </table>
+	                <table class="table table-bordered table-hover table-striped"
+	                       id="tab_logic">
+	                    <thead>
+	                    <tr>
+	                        <th class="text-center">CODIGO</th>
+	                        <th class="text-center">NOMBRE PACIENTE</th>
+	                        <th class="text-center">APELLIDO PACIENTE</th>
+	                        <th class="text-center">DNI</th>
+	                        <th class="text-center">FECHA</th>
+	                        <th class="text-center">RITMO CARDIACO</th>
+	                        <th class="text-center">TRANSTORNO</th>
+	                    </tr>
+	                    </thead>
+	                    <tbody>
+	                    <tr th:each="rac: ${emergenciesAtt}">
+	                        <td th:text="${rac.id}"></td>
+	                        <td th:text="${rac.nombres}"></td>
+	                        <td th:text="${rac.apellidos}"></td>
+	                        <td th:text="${rac.DNI}"></td>
+	                        <td th:text="${rac.fecha_ritmo}"></td>
+	                     <td th:text="${rac.heartRate}"></td>
+	                       <td th:text="${rac.transtorno}"></td>
+	                    </tr>
+	                    </tbody>
+	                </table>
             </div>
         </div>
     </form>
 </div>
 <div th:replace="fragments/footer :: footer"></div>
-
 </body>
 </html>

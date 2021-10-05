@@ -10,7 +10,7 @@
     <script
             src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-
+    <meta http-equiv="refresh" content="2">
 </head>
 <style>
     * {
@@ -84,41 +84,40 @@
     <form id="myform">
         <div class="row clearfix">
             <div class="col-md-12 column" >
-                <table class="table table-bordered table-hover table-striped"
-                       id="tab_logic">
-                    <thead>
-                    <tr>
-                        <th class="text-center">CODIGO</th>
-                        <th class="text-center">NOMBRE PACIENTE</th>
-                        <th class="text-center">APELLIDO PACIENTE</th>
-                        <th class="text-center">DNI</th>
-                        <th class="text-center">FECHA</th>
-                        <th class="text-center">RITMO CARDIACO</th>
-                        <th class="text-center">TRANSTORNO</th>
-                        <th class="text-center">UBICACION</th>
-                           <th class="text-center">OPERACION</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr th:each="rac: ${emergencies}">
-                        <td th:text="${rac.id}"></td>
-                        <td th:text="${rac.nombres}"></td>
-                        <td th:text="${rac.apellidos}"></td>
-                        <td th:text="${rac.DNI}"></td>
-                        <td th:text="${rac.fecha_ritmo}"></td>
-                     <td th:text="${rac.heartRate}"></td>
-                     <td th:text="${rac.transtorno}"></td>
-                      <td><a th:href="@{'/patient/detalle/' + ${rac.id}}"><p> Detalle <span></span></p> </a></td>
-                        <td><a th:href="@{'/patient/modificar/' + ${rac.id}}"
-                         onclick="return confirm('¿Se le brindó una asistencia al paciente?');"><p> Marcar como atendido <span class="glyphicon glyphicon-edit"></span></p> </a></td>
-                    </tr>
-                    </tbody>
-                </table>
+	                <table class="table table-bordered table-hover table-striped"
+	                       id="tab_logic">
+	                    <thead>
+	                    <tr>
+	                        <th class="text-center">CODIGO</th>
+	                        <th class="text-center">NOMBRE PACIENTE</th>
+	                        <th class="text-center">APELLIDO PACIENTE</th>
+	                        <th class="text-center">DNI</th>
+	                        <th class="text-center">FECHA</th>
+	                        <th class="text-center">RITMO CARDIACO</th>
+	                        <th class="text-center">TRANSTORNO</th>
+	                        <th class="text-center">UBICACION</th>
+	                           <th class="text-center">OPERACION</th>
+	                    </tr>
+	                    </thead>
+	                    <tbody>
+	                    <tr th:each="rac: ${emergencies}">
+	                        <td th:text="${rac.id}"></td>
+	                        <td th:text="${rac.nombres}"></td>
+	                        <td th:text="${rac.apellidos}"></td>
+	                        <td th:text="${rac.DNI}"></td>
+	                        <td th:text="${rac.fecha_ritmo}"></td>
+	                     <td th:text="${rac.heartRate}"></td>
+	                     <td th:text="${rac.transtorno}"></td>
+	                      <td><a th:href="@{'/patient/detalle/' + ${rac.id}}"><p> Detalle <span></span></p> </a></td>
+	                        <td><a th:href="@{'/patient/modificar/' + ${rac.id}}"
+	                         onclick="return confirm('¿Se le brindó una asistencia al paciente?');"><p> Marcar como atendido <span class="glyphicon glyphicon-edit"></span></p> </a></td>
+	                    </tr>
+	                    </tbody>
+	                </table>
             </div>
         </div>
     </form>
 </div>
 <div th:replace="fragments/footer :: footer"></div>
-
 </body>
 </html>
