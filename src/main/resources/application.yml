@@ -11,8 +11,8 @@ spring:
         dialect : org.hibernate.dialect.SQLServer2012Dialect
     mail:
         host: smtp.gmail.com
-        username: leyva.calle1403@gmail.com
-        password: zxfjbrchgptmsblb
+        username: it.innova.service@gmail.com
+        password: yyyxcqywihxnbxof
         port: 587
         properties:
             mail:
