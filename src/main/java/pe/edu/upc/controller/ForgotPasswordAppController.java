@@ -30,11 +30,7 @@ public class ForgotPasswordAppController {
     @Autowired
     private UserService userService;
 
-    @GetMapping("/forgot_password_app")
-    public String showForgotAppPasswordForm() {
-        return "forgot_password_form";
-    }
-
+    
     @PostMapping("/forgot_password_app")
     @ResponseStatus(value = HttpStatus.OK)
     public void processForgotAppPassword(HttpServletRequest request, Model model) {
@@ -74,20 +70,6 @@ public class ForgotPasswordAppController {
         helper.setText(content, true);
 
         mailSender.send(message);
-    }
-
-
-    @GetMapping("/reset_password_app")
-    public String showResetAppPasswordForm(@Param(value = "token") String token, Model model) {
-        User customer = userService.getByResetPasswordToken(token);
-        model.addAttribute("token", token);
-
-        if (customer == null) {
-            model.addAttribute("message", "Invalid Token");
-            return "message";
-        }
-
-        return "reset_password_form";
     }
 
     @PostMapping("/reset_password_app")
