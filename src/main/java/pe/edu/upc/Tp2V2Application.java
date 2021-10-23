@@ -42,10 +42,4 @@ public class Tp2V2Application { // extends SpringBootServletInitializer
         return algorithmFactory().getObject();
     }
 
-    @EventListener(ApplicationReadyEvent.class) //mail
-    public void triggerMail(){ //mail
-        int randomNum = ThreadLocalRandom.current().nextInt(11111, 99999 + 1);
-
-        service.sendSimpleEmail("it.innova.service@gmail.com",String.valueOf(randomNum),"Reset Password"); //mail
-    }
 }

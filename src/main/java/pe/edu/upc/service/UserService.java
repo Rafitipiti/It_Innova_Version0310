@@ -57,7 +57,7 @@ public class UserService {
 			userRepo.save(user);
 		}
 	}
-
+	
 	public User getByResetPasswordToken(String token) {
 		return userRepo.findByResetPasswordToken(token);
 	}
