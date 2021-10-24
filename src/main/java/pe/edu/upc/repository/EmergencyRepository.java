@@ -13,7 +13,7 @@ import java.util.Optional;
 
 @Repository
 public interface EmergencyRepository extends JpaRepository<Emergency, Integer> {
-
+	
     @Query(value = "select e from Emergency as e where e.DNI like %:keyword% ")
     List<Emergency> findByKeyword(@Param("keyword") String keyword);
 }

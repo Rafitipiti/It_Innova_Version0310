@@ -56,9 +56,20 @@
 		</dependency>
 		<dependency>                                             <!--EDITADO!!!!!!!!!!!!!!  --> 
 			<groupId>org.springframework.boot</groupId>          <!--EDITADO!!!!!!!!!!!!!!  --> 
-			<artifactId>spring-boot-starter-tomcat</artifactId>  <!--EDITADO!!!!!!!!!!!!!!  --> 
-			<scope>provided</scope>                              <!--EDITADO!!!!!!!!!!!!!!  --> 
+			<artifactId>spring-boot-starter-test</artifactId>    <!--EDITADO!!!!!!!!!!!!!!  --> 
+			<scope>test</scope>                                  <!--EDITADO!!!!!!!!!!!!!!  --> 
+			<exclusions>                                         <!--EDITADO!!!!!!!!!!!!!!  --> 
+				<exclusion>                                      <!--EDITADO!!!!!!!!!!!!!!  --> 
+					<groupId>org.junit.vintage</groupId>         <!--EDITADO!!!!!!!!!!!!!!  --> 
+					<artifactId>junit-vintage-engine</artifactId><!--EDITADO!!!!!!!!!!!!!!  --> 
+				</exclusion>                                     <!--EDITADO!!!!!!!!!!!!!!  --> 
+			</exclusions>                                        <!--EDITADO!!!!!!!!!!!!!!  --> 
 		</dependency>                                            <!--EDITADO!!!!!!!!!!!!!!  --> 
+		<dependency>                                            
+			<groupId>org.springframework.boot</groupId>          
+			<artifactId>spring-boot-starter-tomcat</artifactId>  
+			<scope>provided</scope>                              
+		</dependency>                                             
 		<dependency>
 			<groupId>org.thymeleaf.extras</groupId>
 			<artifactId>thymeleaf-extras-springsecurity5</artifactId>

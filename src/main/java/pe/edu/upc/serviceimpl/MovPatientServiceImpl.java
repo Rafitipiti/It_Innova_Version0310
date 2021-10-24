@@ -1,13 +1,17 @@
 package pe.edu.upc.serviceimpl;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import pe.edu.upc.exception.ResourceNotFoundException;
 import pe.edu.upc.model.MovPatient;
+import pe.edu.upc.model.User;
 import pe.edu.upc.repository.MovPatientRepository;
 import pe.edu.upc.service.MovPatientService;
 
@@ -88,4 +92,30 @@ public class MovPatientServiceImpl implements MovPatientService {
             return myuser;
         }
     }
+    
+    @Override
+	public MovPatient getByResetPasswordToken(String token) {
+    	return userRepository.findByResetPasswordToken(token);
+    };
+    
+    @Override
+    public void updateResetPasswordToken(String token, String email) {
+    	MovPatient movpat = userRepository.findByEmail(email);
+		if (movpat != null) {
+			movpat.setResetPasswordToken(token);
+			userRepository.save(movpat);
+		}
+    };
+	
+	@Override
+	public void updatePassword(MovPatient movpati, String newPassword) {
+		movpati.setResetPasswordToken(null);
+		userRepository.save(movpati);
+	};
+	
+	@Override
+    public Optional<MovPatient> listarId(int id){
+        return userRepository.findById(id);
+    }	
+	
 }
