@@ -112,7 +112,13 @@ public class MovPatientServiceImpl implements MovPatientService {
 		movpati.setResetPasswordToken(null);
 		userRepository.save(movpati);
 	};
-	
+
+    @Override
+    public void updatePassword_app(MovPatient movpati, String newPassword) {
+        movpati.setPassword(newPassword);
+        userRepository.save(movpati);
+    };
+
 	@Override
     public Optional<MovPatient> listarId(int id){
         return userRepository.findById(id);

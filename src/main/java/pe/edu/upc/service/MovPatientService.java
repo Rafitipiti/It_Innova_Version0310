@@ -15,7 +15,7 @@ public interface MovPatientService {
     MovPatient updateUser(int  userId, MovPatient userRequest);
     MovPatient changePassword(int  userId, MovPatient userRequest);
     ResponseEntity<?> deleteUser(int userId);
-    
+    void updatePassword_app(MovPatient movpati, String newPassword);
     MovPatient getByResetPasswordToken(String token);
     void updateResetPasswordToken(String token, String email);
     void updatePassword(MovPatient movpati, String newPassword);

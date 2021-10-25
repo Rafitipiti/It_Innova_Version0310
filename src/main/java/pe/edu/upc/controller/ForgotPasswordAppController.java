@@ -46,6 +46,7 @@ public class ForgotPasswordAppController {
     public void processForgotAppPassword(@RequestBody Forgot forgot, Model model) {
         String email = forgot.Get_email();
         String token = RandomString.make(30);
+        System.out.println(forgot.email);
         try {
             sendEmailApp(email);
             //MovPService.updateResetPasswordToken(token, email);      this
@@ -63,7 +64,7 @@ public class ForgotPasswordAppController {
         MimeMessage message = mailSender.createMimeMessage();
         MimeMessageHelper helper = new MimeMessageHelper(message);
 
-        helper.setFrom("it.innova.service@gmail.com", "Shopme Support");
+        helper.setFrom("it.innova.service@gmail.com", "IT Innova Support");
         helper.setTo(recipientEmail);
         randomNum = ThreadLocalRandom.current().nextInt(11111, 99999 + 1);
         String subject = "Aqui­ esta su codigo de verificacion";
@@ -88,11 +89,12 @@ public class ForgotPasswordAppController {
     public void processResetAppPassword(@RequestBody Forgot forgot, Model model) {
         String token = forgot.Get_token();
         String password = forgot.Get_password();
-        
+        String email = forgot.Get_email();
         System.out.println(forgot.token);
         System.out.println(forgot.password);
-        
-        MovPatient customer = MovPService.getByResetPasswordToken(token);
+        System.out.println(forgot.email);
+
+        MovPatient customer = MovPService.getUserByEmail(email);
 
         model.addAttribute("title", "Reset your password");
 
@@ -102,7 +104,8 @@ public class ForgotPasswordAppController {
             System.out.println("TUVIMOS UN ERROR");
         } else {
             System.out.println(customer);
-            MovPService.updatePassword(customer, password);
+            MovPService.updatePassword_app(customer,password);
+            //MovPService.updatePassword(customer, password);
             model.addAttribute("message", "You have successfully changed your password.");
             System.out.println("SE CAMBIO LA CONTRASENA EXITOSAMENTE");
         }
