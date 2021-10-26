@@ -1,6 +1,7 @@
 package pe.edu.upc.controller;
 
 import net.bytebuddy.utility.RandomString;
+import org.springframework.web.server.ResponseStatusException;
 import pe.edu.upc.model.Forgot;
 import pe.edu.upc.model.MovPatient;
 import pe.edu.upc.model.User;
@@ -47,16 +48,25 @@ public class ForgotPasswordAppController {
         String email = forgot.Get_email();
         String token = RandomString.make(30);
         System.out.println(forgot.email);
-        try {
-            sendEmailApp(email);
-            //MovPService.updateResetPasswordToken(token, email);      this
-            model.addAttribute("message", "Hemos enviado un enlace para restablecer la contraseña a su correo electronico. Por favor, compruebe.");
-            System.out.println("SE HA ENVIADO UN MENSAJE AL CORREO");
-        } catch (Exception ex) {
-            model.addAttribute("error", ex.getMessage());
-            System.out.println("TUVIMOS UN ERROR");
+
+        MovPatient customer = MovPService.getUserByEmail(email);
+        String name = customer.getName();
+        if (name == null ) {
+
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
+        } else {
+            try {
+                System.out.println(name);
+                sendEmailApp(email);
+                //MovPService.updateResetPasswordToken(token, email);      this
+                model.addAttribute("message", "Hemos enviado un enlace para restablecer la contraseña a su correo electronico. Por favor, compruebe.");
+                System.out.println("SE HA ENVIADO UN MENSAJE AL CORREO");
+            } catch (Exception ex) {
+                model.addAttribute("error", ex.getMessage());
+                System.out.println("TUVIMOS UN ERROR");
+            }
+            throw new ResponseStatusException(HttpStatus.OK);
         }
-        
     }
 
     public void sendEmailApp(String recipientEmail)
@@ -102,12 +112,14 @@ public class ForgotPasswordAppController {
             model.addAttribute("message", "Invalid Code");
             System.out.println(customer);
             System.out.println("TUVIMOS UN ERROR");
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
         } else {
             System.out.println(customer);
             MovPService.updatePassword_app(customer,password);
-            //MovPService.updatePassword(customer, password);
+
             model.addAttribute("message", "You have successfully changed your password.");
             System.out.println("SE CAMBIO LA CONTRASENA EXITOSAMENTE");
+            throw new ResponseStatusException(HttpStatus.OK);
         }
     }
 }

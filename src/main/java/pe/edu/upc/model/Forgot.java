@@ -4,6 +4,7 @@ public class Forgot {
     public String token;
     public String password;
     public String email;
+    public Boolean flag;
     
     public String Get_token(){
     	return token;
@@ -14,4 +15,8 @@ public class Forgot {
     public String Get_email() {
     	return email;
     }
+    public Boolean Get_flag() {
+        return flag;
+    }
+
 }
