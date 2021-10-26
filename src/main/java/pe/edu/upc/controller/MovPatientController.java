@@ -50,10 +50,22 @@ public class MovPatientController {
 
     @GetMapping("/mobile")
     public Page<MovPatientResource> getAllUsers(Pageable pageable){
+
         Page<MovPatient> userPage = patientService.getAllUsers(pageable);
         List<MovPatientResource> resources = userPage.getContent()
                 .stream().map(this::convertToResource)
                 .collect(Collectors.toList());
+
+        return new PageImpl<>(resources, pageable, resources.size());
+    }
+    @GetMapping("/mobilex")
+    public Page<MovPatientResource> getAllUsers2(Pageable pageable){
+        pageable = Pageable.unpaged();
+        Page<MovPatient> userPage = patientService.getAllUsers(pageable);
+        List<MovPatientResource> resources = userPage.getContent()
+                .stream().map(this::convertToResource)
+                .collect(Collectors.toList());
+
         return new PageImpl<>(resources, pageable, resources.size());
     }
 
