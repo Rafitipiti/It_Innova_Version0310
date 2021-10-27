@@ -105,10 +105,10 @@ public class ForgotPasswordAppController {
         System.out.println(forgot.email);
 
         MovPatient customer = MovPService.getUserByEmail(email);
-
+        String name = customer.getName();
         model.addAttribute("title", "Reset your password");
 
-        if (customer == null || Integer.parseInt(token) != randomNum) {
+        if (name == null || Integer.parseInt(token) != randomNum) {
             model.addAttribute("message", "Invalid Code");
             System.out.println(customer);
             System.out.println("TUVIMOS UN ERROR");
