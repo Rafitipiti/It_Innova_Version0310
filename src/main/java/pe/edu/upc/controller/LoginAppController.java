@@ -32,7 +32,7 @@ public class LoginAppController {
         
         String name = customer.getName();
         
-        if (name == null || Integer.parseInt(password) != Integer.parseInt(realpassword)) {
+        if (name == null || !String.valueOf(password).equals(String.valueOf(realpassword))) {
             forgot.flag = false;
             model.addAttribute("message", "Invalid Code");
             System.out.println(password+" es diferente de "+realpassword);
