@@ -5,11 +5,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import net.bytebuddy.utility.RandomString;
+import org.springframework.web.server.ResponseStatusException;
 import pe.edu.upc.model.MovPatient;
 import pe.edu.upc.resource.MovPatientResource;
 import pe.edu.upc.resource.SaveMovPatientResource;
@@ -44,8 +46,19 @@ public class MovPatientController {
     
     @PostMapping("/mobile/create")
     public MovPatientResource createUser(@Valid @RequestBody SaveMovPatientResource resource){
-        MovPatient user = convertToEntity(resource);
-        return convertToResource(patientService.createUser(user));
+
+        String email = resource.getEmail();
+        MovPatient customer = patientService.getUserByEmail(email);
+        String val = customer.getName();
+        if ( val != null) {
+            System.out.println("YA EXISTE UN USUARIO CON ESTE EMAIL");
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
+        }
+        else{
+            MovPatient user = convertToEntity(resource);
+            return convertToResource(patientService.createUser(user));
+        }
+
     }
 
     @GetMapping("/mobile")
