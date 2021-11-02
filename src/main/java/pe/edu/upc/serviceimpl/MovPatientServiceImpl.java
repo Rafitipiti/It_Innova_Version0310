@@ -119,6 +119,11 @@ public class MovPatientServiceImpl implements MovPatientService {
         userRepository.save(movpati);
     };
 
+    @Override
+    public void update_change_data_app(MovPatient movpati) {
+        userRepository.save(movpati);
+    };
+
 	@Override
     public Optional<MovPatient> listarId(int id){
         return userRepository.findById(id);

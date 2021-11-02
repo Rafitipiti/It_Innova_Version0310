@@ -21,4 +21,5 @@ public interface MovPatientService {
     void updatePassword(MovPatient movpati, String newPassword);
     MovPatient getUserByEmail(String email);
     public Optional<MovPatient> listarId(int userid);
+    void update_change_data_app(MovPatient movpati);
 }
