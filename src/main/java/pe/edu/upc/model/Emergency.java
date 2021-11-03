@@ -48,8 +48,12 @@ private static final long serialVersionUID = 1L;
 	private String Nombres;
 	@Column(name = "apellidos", nullable = false)
 	private String Apellidos;
-	@Column(name = "DNI", nullable = false)
-	private String DNI;
+
+	@ManyToOne(fetch = FetchType.LAZY, optional = false)
+	@JoinColumn(name = "dni", nullable = false)
+	private MovPatient patient;
+
+
 	public int getId() {
 		return id;
 	}
@@ -104,13 +108,6 @@ private static final long serialVersionUID = 1L;
 	public void setApellidos(String apellidos) {
 		Apellidos = apellidos;
 	}
-	public String getDNI() {
-		return DNI;
-	}
-	public void setDNI(String dNI) {
-		DNI = dNI;
-	}
-	
 
 	
 	

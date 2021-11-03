@@ -9,9 +9,7 @@ import javax.validation.constraints.NotNull;
 public class EmergencyResource {
 
     private int id;
-    private int state;
     private int heartRate;
-    private String length;
-    private String latitude;
+    private String transtorno;
 
 }

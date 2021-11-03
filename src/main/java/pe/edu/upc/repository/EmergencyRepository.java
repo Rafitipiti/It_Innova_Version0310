@@ -13,7 +13,9 @@ import java.util.Optional;
 
 @Repository
 public interface EmergencyRepository extends JpaRepository<Emergency, Integer> {
-	
-    @Query(value = "select e from Emergency as e where e.DNI like %:keyword% ")
+
+    Page<Emergency> findByPatientId(int patientId, Pageable pageable);
+        Optional<Emergency> findByIdAndPatientId(int emergencyId, int patientId);
+    @Query(value = "select e from Emergency as e where e.patient.dni like %:keyword% ")
     List<Emergency> findByKeyword(@Param("keyword") String keyword);
 }
