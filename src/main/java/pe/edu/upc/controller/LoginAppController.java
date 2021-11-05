@@ -43,6 +43,7 @@ public class LoginAppController {
             model.addAttribute("message", "You have successfully signed in.");
             System.out.println("SE INICIO SESION EXITOSAMENTE");
             //throw new ResponseStatusException(HttpStatus.OK);
-            return new ResponseTransfer(String.valueOf(customer.getId()),customer.getName(),customer.getLastName(),customer.getEmail(),String.valueOf(customer.getPassword()));  }
+            return new ResponseTransfer(String.valueOf(customer.getId()),String.valueOf(customer.getName()),String.valueOf(customer.getLastName()),String.valueOf(customer.getEmail()),String.valueOf(customer.getPassword()));
+        }
     }
 }
