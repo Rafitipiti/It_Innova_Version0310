@@ -29,13 +29,13 @@ public class LoginAppController {
         MovPatient customer = MovPService.getUserByEmail(email);
         String realpassword = customer.getPassword();
         model.addAttribute("title", "Login");
-        
+
         String name = customer.getName();
-        
+
         if (name == null || !String.valueOf(password).equals(String.valueOf(realpassword))) {
             forgot.flag = false;
             model.addAttribute("message", "Invalid Code");
-            System.out.println(password+" es diferente de "+realpassword);
+            System.out.println(password + " es diferente de " + realpassword);
             System.out.println("TUVIMOS UN ERROR");
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
         } else {
@@ -43,8 +43,7 @@ public class LoginAppController {
             model.addAttribute("message", "You have successfully signed in.");
             System.out.println("SE INICIO SESION EXITOSAMENTE");
             //throw new ResponseStatusException(HttpStatus.OK);
-            return new ResponseTransfer(String.valueOf(customer.getId()));
+            return new ResponseTransfer(String.valueOf(customer.getId()),String.valueOf(customer.getName()),String.valueOf(customer.getLastName()),String.valueOf(customer.getEmail()),String.valueOf(customer.getPassword()));
         }
     }
-    
 }
