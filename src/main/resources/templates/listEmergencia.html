@@ -104,13 +104,13 @@
 	                        <td th:text="${rac.id}"></td>
 	                        <td th:text="${rac.nombres}"></td>
 	                        <td th:text="${rac.apellidos}"></td>
-	                        <td th:text="${rac.DNI}"></td>
+	                        <td th:text="${rac.getdni()}"></td>
 	                        <td th:text="${rac.fecha_ritmo}"></td>
 	                     <td th:text="${rac.heartRate}"></td>
 	                     <td th:text="${rac.transtorno}"></td>
 	                      <td><a th:href="@{'/patient/detalle/' + ${rac.id}}"><p> Detalle <span></span></p> </a></td>
 	                        <td><a th:href="@{'/patient/modificar/' + ${rac.id}}"
-	                         onclick="return confirm('¿Se le brindó una asistencia al paciente?');"><p> Marcar como atendido <span class="glyphicon glyphicon-edit"></span></p> </a></td>
+	                         onclick="return confirm('ï¿½Se le brindï¿½ una asistencia al paciente?');"><p> Marcar como atendido <span class="glyphicon glyphicon-edit"></span></p> </a></td>
 	                    </tr>
 	                    </tbody>
 	                </table>

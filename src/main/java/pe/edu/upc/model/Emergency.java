@@ -105,6 +105,9 @@ private static final long serialVersionUID = 1L;
 	public String getApellidos() {
 		return Apellidos;
 	}
+	public String getdni() {
+		return patient.getDni();
+	}
 	public void setApellidos(String apellidos) {
 		Apellidos = apellidos;
 	}
