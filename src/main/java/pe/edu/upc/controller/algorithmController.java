@@ -6,6 +6,7 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.view.RedirectView;
 
 import java.net.URI;
@@ -20,6 +21,7 @@ public class algorithmController {
 	@Qualifier("algorithmServicePython")
 	private algorithmService service;
 
+	public RedirectAttributes ra;
 	
 	//public RedirectView localRedirect() {
 	  //  RedirectView redirectView = new RedirectView();
@@ -28,13 +30,11 @@ public class algorithmController {
 	    //return redirectView;
 	//}
 	
-	@RequestMapping("/**")
 	@Scheduled(fixedRate=2000)
 	public String index() {
 		if (service.getalgorithm() == "1") {
-			// COMANDO PARA ACTUALIZAR EL BROWSER
-			//localRedirect();
 			System.out.print("Se acaba de ingresar un registro");
+			return "listEmergencia";
 		}
 		return "";
 	}
