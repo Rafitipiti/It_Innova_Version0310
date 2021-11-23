@@ -20,10 +20,10 @@ public class algorithmServiceFactory implements FactoryBean<algorithmService> {
 	
 	// PARA EL DESPLIEGUE
 	//interpreter.execfile("classes/pe/edu/upc/python/algorithmServicePython.py");
-//	interpreter.execfile("algorithmServicePython.py");
+	interpreter.execfile("algorithmServicePython.py");
 	
 	//PARA EL IDE
-	interpreter.execfile("src\\main\\java\\pe\\edu\\upc\\python\\algorithmServicePython.py");
+	//interpreter.execfile("src\\main\\java\\pe\\edu\\upc\\python\\algorithmServicePython.py");
 		
 	PyObject buildingObject = interpreter.get("algorithmServicePython").__call__(); 
 
