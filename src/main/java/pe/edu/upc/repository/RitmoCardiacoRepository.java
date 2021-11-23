@@ -9,8 +9,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
-
-import pe.edu.upc.model.Emergency;
 import pe.edu.upc.model.RitmoCardiaco;
 @Repository
 public interface RitmoCardiacoRepository extends JpaRepository<RitmoCardiaco, Integer> {

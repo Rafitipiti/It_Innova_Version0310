@@ -4,8 +4,6 @@ import java.util.Optional;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-
-import pe.edu.upc.model.Emergency;
 import pe.edu.upc.model.RitmoCardiaco;
 
 public interface RitmoCardiacoService {

@@ -1,16 +1,8 @@
 package pe.edu.upc.model;
 
-import java.io.Serializable;
-import java.util.Date;
-
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
-import org.hibernate.annotations.OnDelete;
-import org.hibernate.annotations.OnDeleteAction;
-
 
 @Data
 @Entity
@@ -111,7 +103,11 @@ private static final long serialVersionUID = 1L;
 	public void setApellidos(String apellidos) {
 		Apellidos = apellidos;
 	}
-
-	
+	public MovPatient getPatient() {
+		return patient;
+	}
+	public void setPatient(MovPatient patient) {
+		this.patient = patient;
+	}	
 	
 }

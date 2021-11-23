@@ -1,22 +1,14 @@
 package pe.edu.upc.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.scheduling.annotation.EnableScheduling;
-import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-import pe.edu.upc.algorithm.algorithmService;
 import pe.edu.upc.model.Emergency;
-import pe.edu.upc.model.Paciente;
 import pe.edu.upc.service.EmergencyService;
-import java.text.ParseException;
 import java.util.List;
-import java.util.Map;
 import java.util.Optional;
 
 @Controller

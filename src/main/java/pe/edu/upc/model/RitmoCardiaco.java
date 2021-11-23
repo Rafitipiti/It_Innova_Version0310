@@ -1,14 +1,8 @@
 package pe.edu.upc.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
-
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
-
-import org.hibernate.annotations.OnDelete;
-import org.hibernate.annotations.OnDeleteAction;
-
 import java.util.Date;
 
 @Data
@@ -38,42 +32,31 @@ public class RitmoCardiaco {
     @Column(name = "fecha", nullable = false)
     private Date fecha;
 
-
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
 	@JoinColumn(name = "patient_id", nullable = false)
 	private MovPatient patient;
-
-	
-
-
 	public int getRitmoCardiaco() {
 		return ritmoCardiaco;
 	}
-
 
 	public void setRitmoCardiaco(int ritmoCardiaco) {
 		this.ritmoCardiaco = ritmoCardiaco;
 	}
 
-
 	public Date getFecha() {
 		return fecha;
 	}
-
 
 	public void setFecha(Date fecha) {
 		this.fecha = fecha;
 	}
 
-
 	public MovPatient getPatient() {
 		return patient;
 	}
-
 
 	public void setPatient(MovPatient patient) {
 		this.patient = patient;
 	}
     
-
 }

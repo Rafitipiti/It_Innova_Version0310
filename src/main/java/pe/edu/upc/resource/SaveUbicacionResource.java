@@ -35,7 +35,4 @@ public class SaveUbicacionResource {
 		public void setLongitud(String longitud) {
 			this.longitud = longitud;
 		}
-
-    
-    
 }

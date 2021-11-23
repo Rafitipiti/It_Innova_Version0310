@@ -6,12 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import pe.edu.upc.exception.ResourceNotFoundException;
 import pe.edu.upc.model.MovPatient;
-import pe.edu.upc.model.User;
 import pe.edu.upc.repository.MovPatientRepository;
 import pe.edu.upc.service.MovPatientService;
 

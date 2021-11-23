@@ -1,8 +1,4 @@
 package pe.edu.upc.resource;
-
-
-import javax.validation.constraints.NotNull;
-
 import lombok.Data;
 @Data
 public class UbicacionResource {

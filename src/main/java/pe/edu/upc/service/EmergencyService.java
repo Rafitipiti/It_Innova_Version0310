@@ -3,8 +3,6 @@ package pe.edu.upc.service;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import pe.edu.upc.model.Emergency;
-import pe.edu.upc.model.Paciente;
-import pe.edu.upc.model.RitmoCardiaco;
 
 import java.util.List;
 import java.util.Optional;

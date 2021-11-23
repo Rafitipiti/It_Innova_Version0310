@@ -4,12 +4,9 @@ import java.util.Date;
 
 @Data
 public class RitmoCardiacoResource {
-
    
     private int ritmoCardiaco;
     private Date fecha;
-
-	
 
 	public int getRitmoCardiaco() {
 		return ritmoCardiaco;

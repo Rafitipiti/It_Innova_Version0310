@@ -2,8 +2,6 @@ package pe.edu.upc.controller;
 
 import java.util.List;
 import java.util.Map;
-import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
@@ -14,8 +12,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-
-import pe.edu.upc.model.Emergency;
 import pe.edu.upc.model.Role;
 import pe.edu.upc.model.User;
 import pe.edu.upc.service.UserService;

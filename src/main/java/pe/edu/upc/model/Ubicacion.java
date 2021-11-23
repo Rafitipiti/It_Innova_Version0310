@@ -1,10 +1,7 @@
 package pe.edu.upc.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
-
 import java.util.Date;
-
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
@@ -76,7 +73,7 @@ public class Ubicacion {
 	public void setLongitud(String longitud) {
 		this.longitud = longitud;
 	}
-
+	
     
     
 }

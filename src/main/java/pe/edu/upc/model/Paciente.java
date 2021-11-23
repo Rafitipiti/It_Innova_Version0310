@@ -11,7 +11,6 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Pattern;
-import javax.validation.constraints.Size;
 
 @Entity
 @Table (name ="Paciente")
@@ -93,6 +92,6 @@ private static final long serialVersionUID = 1L;
 	public void setNrocelular(String nrocelular) {
 		this.nrocelular = nrocelular;
 	}
-
+	
 	
 }

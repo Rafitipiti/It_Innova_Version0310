@@ -9,10 +9,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import pe.edu.upc.exception.ResourceNotFoundException;
-import pe.edu.upc.model.Emergency;
-import pe.edu.upc.model.MovPatient;
 import pe.edu.upc.model.RitmoCardiaco;
-import pe.edu.upc.model.Ubicacion;
 import pe.edu.upc.repository.MovPatientRepository;
 import pe.edu.upc.repository.RitmoCardiacoRepository;
 import pe.edu.upc.service.RitmoCardiacoService;
