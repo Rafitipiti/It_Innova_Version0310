@@ -26,8 +26,26 @@ public class ForgotPasswordAppController {
     @Autowired
     private MovPatientService MovPService;
 
-    private int randomNum = ThreadLocalRandom.current().nextInt(11111, 99999 + 1);
-
+    private String randomcode = create_random();
+    
+    public String create_random() {
+    	String code = "";
+    	char c = 'a';
+    	for(int i = 0; i < 10; i++) {
+    		int ran = ThreadLocalRandom.current().nextInt(0,36);
+    		ran = ran%36;	
+    		if(ran >= 10) {
+    			ran = ran+55;
+    			c = (char)ran;
+    		}
+    		else {
+    			c = (char)(ran+'0');
+    		}
+    		code = code + c; 		
+        }
+    	return code;
+    }
+    
     @PostMapping("/forgot_password_app")
     @ResponseStatus(value = HttpStatus.OK)
     public void processForgotAppPassword(@RequestBody Forgot forgot, Model model) {
@@ -62,13 +80,12 @@ public class ForgotPasswordAppController {
 
         helper.setFrom("it.innova.service@gmail.com", "IT Innova Support");
         helper.setTo(recipientEmail);
-        randomNum = ThreadLocalRandom.current().nextInt(11111, 99999 + 1);
         String subject = "Aqui­ esta su codigo de verificacion";
 
         String content = "<p>Hola,</p>"
                 + "<p>Ha solicitado restablecer su contraseña.</p>"
                 + "<p>El codigo de verificacion es el siguiente:</p>"
-                + randomNum
+                + randomcode
                 + "<br>"
                 + "<p>Ingreselo en la aplicacion y procesa con los pasos para el restablecimiento de su contraseña, ";
 
@@ -89,12 +106,12 @@ public class ForgotPasswordAppController {
         System.out.println(forgot.token);
         System.out.println(forgot.password);
         System.out.println(forgot.email);
-
+        
         MovPatient customer = MovPService.getUserByEmail(email);
         String name = customer.getName();
         model.addAttribute("title", "Reset your password");
-
-        if (name == null || Integer.parseInt(token) != randomNum) {
+        
+        if (name == null || !((token).equals(randomcode))) {
             model.addAttribute("message", "Invalid Code");
             System.out.println(customer);
             System.out.println("TUVIMOS UN ERROR");
