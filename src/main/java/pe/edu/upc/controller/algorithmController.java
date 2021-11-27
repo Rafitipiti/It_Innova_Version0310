@@ -17,6 +17,8 @@ public class algorithmController {
 	@Qualifier("algorithmServicePython")
 	private algorithmService service;
 
+	public RedirectAttributes ra;
+	
 	@Scheduled(fixedRate=2000)
 	public String index() {
 		if (service.getalgorithm() == "1") {
